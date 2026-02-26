@@ -1,6 +1,7 @@
 "use client";
 
-import { useAccount, useReadContract } from "@starknet-react/core";
+import { useAccount } from "@starknet-react/core";
+import { useReadContract } from "@starknet-react/core";
 import { formatTokenAmount } from "@/utils";
 
 const ERC20_ABI = [
@@ -20,7 +21,8 @@ export function useTokenBalance(tokenAddress: string, decimals: number) {
 
   const { data, isLoading, refetch } = useReadContract({
     abi: ERC20_ABI,
-    address: tokenAddress,
+    // Cast tokenAddress to satisfy the template literal type
+    address: tokenAddress as `0x${string}`,
     functionName: "balanceOf",
     args: address ? [address] : undefined,
     enabled: !!address && !!tokenAddress,
