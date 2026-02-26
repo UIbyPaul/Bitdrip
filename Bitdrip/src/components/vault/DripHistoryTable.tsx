@@ -1,7 +1,7 @@
 "use client";
 
 import { DripEvent } from "@/types";
-import { formatTokenAmount, getTxUrl } from "@/utils";
+import { formatTokenAmount } from "@/utils";
 import { getTxUrl as getTx } from "@/lib/contracts";
 import { format } from "date-fns";
 
